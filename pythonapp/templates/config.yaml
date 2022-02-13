@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "pythonapp.fullname" . }}-cm
+  labels:
+    {{- include "pythonapp.labels" . | nindent 4 }}
+data:
+  {{- $hostname := .Release.Name -}}
+  dbhost: {{ include "pythondb.fullname" }}-service
+  dbport: {{ .Values.mongodbdata.dbport }}
+  dbuser: {{ .Values.mongodbdata.dbuser | quote }}

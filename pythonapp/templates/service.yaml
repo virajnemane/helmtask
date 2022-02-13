@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "pythonapp.fullname" . }}-service
+  labels:
+    {{- include "pythonapp.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 5000
+      nodePort: {{ .Values.service.nodeport }}
+  selector:
+    {{- include "pythonapp.selectorLabels" . | nindent 4 }}
