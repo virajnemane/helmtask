@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "pythondb.labels" . | nindent 4 }}
 data:
-  MONGO_INITDB_DATABASE: {{ .Values.mongodbdata.dbname }}
-  MONGO_INITDB_ROOT_USERNAME: {{ .Values.mongodbdata.username }}
+  MONGO_INITDB_DATABASE: {{ .Values.mongodbdata.dbname | quote }}
+  MONGO_INITDB_ROOT_USERNAME: {{ .Values.mongodbdata.username | quote }}
   init-db.js: |-
     {{- .Files.Get "init-db.js" | nindent 4 }}

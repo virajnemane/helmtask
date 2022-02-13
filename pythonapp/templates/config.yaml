@@ -6,5 +6,5 @@ metadata:
     {{- include "pythonapp.labels" . | nindent 4 }}
 data:
   dbhost: {{ include "pythondb.fullname" . }}-service  
-  dbport: {{ .Values.mongodbdata.dbport }}
+  dbport: {{ .Values.mongodbdata.dbport | quote }}
   dbuser: {{ .Values.mongodbdata.dbuser | quote }}

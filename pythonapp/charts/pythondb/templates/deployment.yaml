@@ -30,7 +30,16 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           env: 
-            {{- toYaml .Values.env | nindent 10 }}
+          - name: MONGO_INITDB_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ include "pythondb.fullname" . }}-cm
+                key: MONGO_INITDB_DATABASE
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ include "pythondb.fullname" . }}-cm
+                key: MONGO_INITDB_ROOT_USERNAME
           - name: MONGO_INITDB_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
