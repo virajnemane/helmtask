@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dbdeploy
+  name: dbdeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dbdeploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dbdeploy
+    spec:
+      containers:
+      - image: mongo
+        name: mongo
+        volumeMounts:
+        - name: config-volume
+          mountPath: /docker-entrypoint-initdb.d/
+        env:
+        - name: MONGO_INITDB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: dbconfig
+              key: MONGO_INITDB_DATABASE
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: dbconfig
+              key: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dbsecret
+              key: MONGO_INITDB_ROOT_PASSWORD
+      volumes:
+      - name: config-volume
+        configMap:
+          name: dbconfig
+          items:
+          - key: init-db.js
+            path: init-db.js      
+status: {}

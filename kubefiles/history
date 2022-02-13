@@ -1,0 +1,131 @@
+979  helm create customchart2
+  980  helm --help
+  981  cd 03-Helm/
+  982  helm template customchart/
+  983  helm install customchart/ --dryrun --debug
+  984  helm install customchart/ --dry-run --debug
+  985  helm install test customchart/ --dry-run --debug
+  986  helm hosts:
+  987  clear
+  988  helm install mytestsql stable/mysql
+  989  cd ..
+  990  git pull
+  991  docker-compose
+  992  sudo apt install docker-compose
+  993  docker
+  994  cd flapp/
+  995  docker-compose up
+  996  sudo docker-compose up
+  997  curl localhost:5000
+  998  curl localhost:5000/animals
+  999  exit
+ 1000  ls
+ 1001  cd flapp/
+ 1002  helm create pythonapp
+ 1003  ls
+ 1004  cd app/
+ 1005  docker build -t virajnemane/app .
+ 1006  sudo docker build -t virajnemane/app .
+ 1007  docker image ls
+ 1008  sudo docker image ls
+ 1009  docker push virajnemane/app
+ 1010  sudo docker push virajnemane/app
+ 1011  docker login
+ 1012  sudo docker login
+ 1013  sudo docker push virajnemane/app
+ 1014  sudo docker login
+ 1015  sudo docker push virajnemane/app
+ 1016  sudo docker login
+ 1017  sudo docker push virajnemane/app
+ 1018  docker login
+ 1019  sudo docker login
+ 1020  cat sudo apt install gnupg2 pass
+ 1021  cat /home/kubeadmin/.docker/config.json
+ 1022  sudo cat /home/kubeadmin/.docker/config.json
+ 1023  sudo docker login
+ 1024  sudo docker push virajnemane/app
+ 1025  docker run -itd virajnemane/app 
+ 1026  sudo docker run -itd virajnemane/app 
+ 1027  docker ps
+ 1028  sudo docker ps
+ 1029  docker container stop 83a9
+ 1030  sudo docker container stop 83a9
+ 1031  sudo docker container stop ff37
+ 1032  sudo docker run -itd virajnemane/app -p 5000:5000
+ 1033  sudo docker run -itd virajnemane/app
+ 1034  sudo docker ps
+ 1035  sudo docker container stop 7a38
+ 1036  sudo docker run -itd virajnemane/app -p 5000:5000 c1
+ 1037  sudo docker ps
+ 1038  docker image ls
+ 1039  pwd
+ 1040  sudo docker push virajnemane/app
+ 1041  sudo docker run -itd virajnemane/app -p 5000:5000 c1
+ 1042  sudo docker run -itd virajnemane/app -p 5000:5000
+ 1043  sudo docker run -itd virajnemane/app
+ 1044  cd ..
+ 1045  ll
+ 1046  cd pythonapp/templates/
+ 1047  ll
+ 1048  kubectl create deploy app --image=virajnemane/app --replicas=1 --dry-run=client -o yaml > kubapp.yaml
+ 1049  cd ..
+ 1050  cd charts/
+ 1051  ll
+ 1052  helm create mongodbapp
+ 1053  ll
+ 1054  cd mongodbapp/
+ 1055  cd ..
+ 1056  cd 
+ 1057  cd /home/kubeadmin/kes/flapp/kubefiles
+ 1058  kubectl create configmap appconfig --from-literal=dbhost=dbsvc --dry-run=client -o yaml > appconfig.yaml
+ 1059  kubectl create configmap dbconfig --from-literal=MONGO_INITDB_DATABASE=test --dry-run=client -o yaml > dbconfig.yaml
+ 1060  kubectl create secret generic appsecret --from-literal=dbpass=pass --dry-run=client -o yaml > appsecret.yaml
+ 1061  kubectl create secret generic dbsecret --from-literal=MONGO_INITDB_ROOT_PASSWORD=pass --dry-run=client -o yaml > dbsecret.yaml
+ 1062  kubectl create deploy appdeploy --image=virajnemane/app --replicas=1 --dry-run=client -o yaml > appdeploy.yaml
+ 1063  kubectl create deploy dbdeploy --image=mongo --replicas=1 --dry-run=client -o yaml > dbdeploy.yaml
+ 1064  kubectl create configmap test --from-env-file=/home/kubeadmin/kes/flapp/init-db.js --dry-run=client -o yaml > test.yaml
+ 1065  kubectl create configmap game-config-3 --from-file=/home/kubeadmin/kes/flapp/init-db.js --dry-run=client -o yaml > test2.yaml
+ 1066  kubectl explain pod.volume
+ 1067  kubectl explain pod.spec.volume
+ 1068  kubectl explain pod.spec
+ 1069  kubectl explain pod.spec.volumes
+ 1070  kubectl explain pod.spec.volumes.configMap
+ 1071  ls
+ 1072  kubectl apply -f .
+ 1073  kubectl delete -f .
+ 1074  ls -lrt
+ 1075  kubectl apply -f appconfig.yaml 
+ 1076  kubectl apply -f appsecret.yaml 
+ 1077  kubectl apply -f dbconfig.yaml 
+ 1078  kubectl apply -f dbsecret.yaml
+ 1079  kubectl apply -f dbdeploy.yaml 
+ 1080  kubectl apply -f appdeploy.yaml 
+ 1081  kubectl get pods
+ 1082  kubectl get pods -o wide
+ 1083  curl 10.47.0.15:5000
+ 1084  curl 10.47.0.15:5000/animals
+ 1085  kubectl delete -f .
+ 1086  kubectl expose deploy dbdeploy --name=dbservice --help
+ 1087  kubectl expose deploy dbdeploy --name=dbservice --target-port=27017 --port=27017 --dry-run=client -o yaml > dbservice.yaml
+ 1088  kubectl apply -f dbdeploy.yaml 
+ 1089  kubectl expose deploy dbdeploy --name=dbservice --target-port=27017 --port=27017 --dry-run=client -o yaml > dbservice.yaml
+ 1090  kubectl describe dbservice
+ 1091  kubectl describe svc  dbservice
+ 1092  kubectl describe svc
+ 1093  kubectl get svc
+ 1094  kubectl apply -f dbservice.yaml 
+ 1095  kubectl describe svc dbservice
+ 1096  kubectl delete -f .
+ 1097  cat dbservice.yaml 
+ 1098  kubectl apply -f .
+ 1099  kubectl get svc 
+ 1100  kubectl describe svc dbservice
+ 1101  kubectl get pods -o wide
+ 1102  curl 10.47.0.14:5000
+ 1103  curl 10.47.0.14:5000/animals
+ 1104  kubectl get deploy
+ 1105  kubectl expose deploy appdeploy --help
+ 1106  kubectl expose deploy appdeploy --target-port=5000 --name=appservice --type=NodePort --dry-run=client -o yaml > appservice.yaml
+ 1107  kubectl expose deploy appdeploy --target-port=5000 --name=appservice --type=NodePort --port=5000 --dry-run=client -o yaml > appservice.yaml
+ 1108  kubectl apply -f appservice.yaml 
+ 1109  history

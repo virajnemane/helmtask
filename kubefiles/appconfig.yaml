@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  dbhost: "dbservice"
+  dbport: "27017"
+  dbuser: "root"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: appconfig

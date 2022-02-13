@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  MONGO_INITDB_DATABASE: animal_db
+  MONGO_INITDB_ROOT_USERNAME: root
+  init-db.js: |-
+    db = db.getSiblingDB("animal_db");
+    db.animal_tb.drop();
+
+    db.animal_tb.insertMany([
+        {
+            "id": 1,
+            "name": "Lion",
+            "type": "wild"
+        },
+        {
+            "id": 2,
+            "name": "Cow",
+            "type": "domestic"
+        },
+        {
+            "id": 3,
+            "name": "Tiger",
+            "type": "wild"
+        },
+    ]);
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: dbconfig

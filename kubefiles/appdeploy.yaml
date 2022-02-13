@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: appdeploy
+  name: appdeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appdeploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: appdeploy
+    spec:
+      containers:
+      - image: virajnemane/app
+        env:
+        - name: dbhost
+          valueFrom:
+            configMapKeyRef:
+              name: appconfig
+              key: dbhost
+        - name: dbport
+          valueFrom:
+            configMapKeyRef:
+              name: appconfig
+              key: dbport
+        - name: dbuser
+          valueFrom:
+            configMapKeyRef:
+              name: appconfig
+              key: dbuser
+        - name: dbpass
+          valueFrom:
+            secretKeyRef:
+              name: appsecret
+              key: dbpass
+        name: app
+        resources: {}
+status: {}
